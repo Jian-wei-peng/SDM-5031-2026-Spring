@@ -2,7 +2,7 @@ import os
 import time
 from dataclasses import dataclass
 from logging import getLogger
-from typing import List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 import numpy as np
 import torch
@@ -27,12 +27,44 @@ def _normalize_to_unit_square(node_xy: torch.Tensor) -> torch.Tensor:
 @dataclass
 class LibResult:
     instances: List[str]
-    optimal: List[float]
+    optimal: List[Optional[float]]
     problem_size: List[int]
     no_aug_score: List[float]
     aug_score: List[float]
-    no_aug_gap: List[float]
-    aug_gap: List[float]
+    no_aug_gap: List[Optional[float]]
+    aug_gap: List[Optional[float]]
+    total_instance_num: int = 0
+    solved_instance_num: int = 0
+
+    @staticmethod
+    def _mean_valid(values: List[Optional[float]]) -> Optional[float]:
+        valid_values = [value for value in values if value is not None]
+        if not valid_values:
+            return None
+        return float(np.mean(valid_values))
+
+    @property
+    def avg_no_aug_gap(self) -> Optional[float]:
+        return self._mean_valid(self.no_aug_gap)
+
+    @property
+    def avg_aug_gap(self) -> Optional[float]:
+        return self._mean_valid(self.aug_gap)
+
+    def to_dict(self) -> Dict[str, object]:
+        return {
+            "instances": self.instances,
+            "optimal": self.optimal,
+            "problem_size": self.problem_size,
+            "no_aug_score": self.no_aug_score,
+            "aug_score": self.aug_score,
+            "no_aug_gap": self.no_aug_gap,
+            "aug_gap": self.aug_gap,
+            "total_instance_num": self.total_instance_num,
+            "solved_instance_num": self.solved_instance_num,
+            "avg_no_aug_gap": self.avg_no_aug_gap,
+            "avg_aug_gap": self.avg_aug_gap,
+        }
 
 
 class TSPTester_LIB:
@@ -55,8 +87,10 @@ class TSPTester_LIB:
 
         self.model = Model(**self.model_params)
 
-        model_load = tester_params['model_load']
-        checkpoint_fullname = '{path}/checkpoint-{epoch}.pt'.format(**model_load)
+        checkpoint_fullname = tester_params.get('checkpoint_path')
+        if checkpoint_fullname is None:
+            model_load = tester_params['model_load']
+            checkpoint_fullname = '{path}/checkpoint-{epoch}.pt'.format(**model_load)
         checkpoint = torch.load(checkpoint_fullname, map_location=device)
         self.model.load_state_dict(checkpoint['model_state_dict'])
 
@@ -105,8 +139,10 @@ class TSPTester_LIB:
 
                     optimal = tsplib_cost.get(name, None)
                     if optimal is None:
-                        self.logger.info(f"Skip (optimal not found): {name}")
-                        continue
+                        self.logger.info(
+                            f"Optimal not found for {name}. "
+                            "Will report scores but leave gap fields empty."
+                        )
 
                     self.logger.info("===============================================================")
                     self.logger.info("Instance name: {}, problem_size: {}, EDGE_WEIGHT_TYPE: {}".format(name, dimension, ew_type))
@@ -129,24 +165,38 @@ class TSPTester_LIB:
 
                     solved_instance_num += 1
 
-                    no_aug_gap = (no_aug_score - optimal) / optimal * 100
-                    aug_gap = (aug_score - optimal) / optimal * 100
+                    if optimal is None:
+                        no_aug_gap = None
+                        aug_gap = None
+                    else:
+                        no_aug_gap = (no_aug_score - optimal) / optimal * 100
+                        aug_gap = (aug_score - optimal) / optimal * 100
 
                     result.instances.append(name)
-                    result.optimal.append(float(optimal))
+                    result.optimal.append(float(optimal) if optimal is not None else None)
                     result.problem_size.append(int(dimension))
                     result.no_aug_score.append(float(no_aug_score))
                     result.aug_score.append(float(aug_score))
-                    result.no_aug_gap.append(float(no_aug_gap))
-                    result.aug_gap.append(float(aug_gap))
+                    result.no_aug_gap.append(float(no_aug_gap) if no_aug_gap is not None else None)
+                    result.aug_gap.append(float(aug_gap) if aug_gap is not None else None)
 
-                    self.logger.info(
-                        "optimal: {:.3f}, no_aug: {:.3f} (gap {:.3f}%), aug: {:.3f} (gap {:.3f}%)".format(
-                            optimal, no_aug_score, no_aug_gap, aug_score, aug_gap
+                    if optimal is None:
+                        self.logger.info(
+                            "no public optimum. no_aug: {:.3f}, aug: {:.3f}".format(
+                                no_aug_score, aug_score
+                            )
                         )
-                    )
+                    else:
+                        self.logger.info(
+                            "optimal: {:.3f}, no_aug: {:.3f} (gap {:.3f}%), aug: {:.3f} (gap {:.3f}%)".format(
+                                optimal, no_aug_score, no_aug_gap, aug_score, aug_gap
+                            )
+                        )
 
         end_time_all = time.time()
+        result.total_instance_num = all_instance_num
+        result.solved_instance_num = solved_instance_num
+
         self.logger.info("=========================== Summary ===========================")
         self.logger.info(
             "All done, solved instance number: {}/{}, total time: {:.2f}s".format(
@@ -154,12 +204,17 @@ class TSPTester_LIB:
             )
         )
 
-        if solved_instance_num > 0:
+        if solved_instance_num > 0 and result.avg_aug_gap is not None:
             self.logger.info(
                 "Avg gap(no aug): {:.3f}%, Avg gap(aug): {:.3f}%".format(
-                    float(np.mean(result.no_aug_gap)),
-                    float(np.mean(result.aug_gap)),
+                    result.avg_no_aug_gap,
+                    result.avg_aug_gap,
                 )
+            )
+        elif solved_instance_num > 0:
+            self.logger.info(
+                "Avg gap unavailable because public optimal tour lengths were not provided "
+                "for the evaluated instances."
             )
 
         if detailed_log:
