@@ -87,7 +87,7 @@
       \end{block}
       \begin{itemize}
         \item Starter code already includes training and evaluation scripts
-        \item Use the public validation set to iterate and compare against the baseline
+        \item Use the public validation set to iterate and compare \texttt{avg\_aug\_gap}
         \item Final grading will use the same interface on a hidden test set
       \end{itemize}
     \end{column}
@@ -122,9 +122,9 @@ TSP/POMO/result/
     \begin{column}{0.48\textwidth}
       \begin{block}{Bundled assets}
         \begin{itemize}
-          \item Public validation set: \texttt{TSP/data/val}
-          \item Baseline checkpoint: {\scriptsize\texttt{checkpoint-3000.pt}}
-          \item Standardized evaluation entrypoint: \texttt{TSP/POMO/test.py}
+          \item Validation split: \texttt{TSP/data/val}
+          \item Baseline: bundled POMO checkpoint at epoch 3000
+          \item Evaluation entrypoint: \texttt{TSP/POMO/test.py}
         \end{itemize}
       \end{block}
       \begin{alertblock}{Important}
@@ -252,6 +252,16 @@ python test.py \
   \end{block}
 \end{frame}
 
+\begin{frame}{A Few RL Training Tips}
+  \begin{itemize}
+    \item Do not start with a full 3000-epoch run every time. Train for a small number of epochs first and inspect the convergence curve.
+    \item Use early experiments to compare trends, not just final scores. A model that learns faster is often easier to improve.
+    \item Validate often on the public split so you can stop bad ideas early.
+    \item Change one thing at a time: architecture, sampling strategy, reward design, or test-time inference.
+    \item Save exact commands and checkpoints. In RL, it is easy to lose track of which setting actually helped.
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Final Deliverables}
   \begin{block}{What to submit}
     \begin{itemize}
@@ -261,6 +271,12 @@ python test.py \
       \item In-class presentation
     \end{itemize}
   \end{block}
+
+  \begin{alertblock}{Submission deadline}
+    Wednesday, May 13, 2026
+
+    Teaching week 12
+  \end{alertblock}
 
   \vspace{0.3cm}
   \centering
