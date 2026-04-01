@@ -6,11 +6,10 @@
 - `TSP/data/val` 现在提供给同学的是公开验证集，用于开发、调参和本地对比。
 - `TSP/data/val` 不是最终验收用的测试集。课程最终验收会使用课程组保留的隐藏测试集。
 - 官方性能指标看的是 `avg_aug_gap`，也就是开启 test-time augmentation 后的平均 gap。
-- `no_aug_gap` 只作为诊断信息保留，不作为最终性能评价指标。
 
 ## Project Requirements
 
-- `20%` Performance: 在公开验证集上验证，并且在至少 `70%` 的实例上优于 baseline。
+- `20%` Performance: 测试集上测试，并且在至少 `70%` 的实例上优于 baseline。
 - `10%` Performance Rank: 按实验结果在全体同学中的平均排名计分。
 - `10%` Method Novelty: 需要提交论文风格的 project report 和 presentation，说明方法设计、实验设置与创新点。
 
