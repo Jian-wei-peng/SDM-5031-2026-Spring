@@ -1,0 +1,43 @@
+[2026-04-28 19:24:19] test.py(248) : DEBUG_MODE: False
+[2026-04-28 19:24:19] test.py(249) : USE_CUDA: False, CUDA_DEVICE_NUM: 0
+[2026-04-28 19:24:19] test.py(250) : model_params{'embedding_dim': 128, 'sqrt_embedding_dim': 11.313708498984761, 'encoder_layer_num': 6, 'qkv_dim': 16, 'head_num': 8, 'logit_clipping': 10, 'ff_hidden_dim': 512, 'eval_type': 'argmax'}
+[2026-04-28 19:24:19] test.py(251) : tester_params{'use_cuda': False, 'cuda_device_num': 0, 'checkpoint_path': '/Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/POMO/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt', 'filename': '/Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/data/val', 'augmentation_enable': True, 'aug_factor': 8, 'detailed_log': False, 'scale_range_all': [[0, 10000]]}
+[2026-04-28 19:24:19] test.py(253) : output_json: /Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/POMO/PJW-model/result_lib/smoke_baseline_eval.json
+[2026-04-28 19:24:19] test.py(254) : Primary metric for official evaluation: avg_aug_gap (computed from augmented inference when public/private optima are available).
+[2026-04-28 19:24:19] TSPTester_LIB.py(117) : Model loaded from: /Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/POMO/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt
+[2026-04-28 19:24:19] TSPTester_LIB.py(118) : PolyNet stage-1 decoder enabled: False
+[2026-04-28 19:24:19] TSPTester_LIB.py(119) : Number of parameters: 1.27M
+[2026-04-28 19:24:19] TSPTester_LIB.py(141) : #################  Test scale range: [0, 10000]  #################
+[2026-04-28 19:24:19] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:19] TSPTester_LIB.py(168) : Instance name: pr299, problem_size: 299, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:22] TSPTester_LIB.py(210) : optimal: 48191.000, no_aug: 58088.000 (gap 20.537%), aug: 54930.000 (gap 13.984%)
+[2026-04-28 19:24:22] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:22] TSPTester_LIB.py(168) : Instance name: ch150, problem_size: 150, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:23] TSPTester_LIB.py(210) : optimal: 6528.000, no_aug: 6554.000 (gap 0.398%), aug: 6554.000 (gap 0.398%)
+[2026-04-28 19:24:23] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:23] TSPTester_LIB.py(168) : Instance name: kroA100, problem_size: 100, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:23] TSPTester_LIB.py(210) : optimal: 21282.000, no_aug: 21472.000 (gap 0.893%), aug: 21420.000 (gap 0.648%)
+[2026-04-28 19:24:23] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:23] TSPTester_LIB.py(168) : Instance name: kroB150, problem_size: 150, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:23] TSPTester_LIB.py(210) : optimal: 26130.000, no_aug: 26942.000 (gap 3.108%), aug: 26405.000 (gap 1.052%)
+[2026-04-28 19:24:23] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:23] TSPTester_LIB.py(168) : Instance name: kroC100, problem_size: 100, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:24] TSPTester_LIB.py(210) : optimal: 20749.000, no_aug: 21084.000 (gap 1.615%), aug: 20799.000 (gap 0.241%)
+[2026-04-28 19:24:24] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:24] TSPTester_LIB.py(168) : Instance name: pr124, problem_size: 124, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:24] TSPTester_LIB.py(210) : optimal: 59030.000, no_aug: 59543.000 (gap 0.869%), aug: 59076.000 (gap 0.078%)
+[2026-04-28 19:24:24] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:24] TSPTester_LIB.py(168) : Instance name: eil101, problem_size: 101, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:24] TSPTester_LIB.py(210) : optimal: 629.000, no_aug: 630.000 (gap 0.159%), aug: 630.000 (gap 0.159%)
+[2026-04-28 19:24:24] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:24] TSPTester_LIB.py(168) : Instance name: kroA200, problem_size: 200, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:25] TSPTester_LIB.py(210) : optimal: 29368.000, no_aug: 30650.000 (gap 4.365%), aug: 29992.000 (gap 2.125%)
+[2026-04-28 19:24:25] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:25] TSPTester_LIB.py(168) : Instance name: pr226, problem_size: 226, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:27] TSPTester_LIB.py(210) : optimal: 80369.000, no_aug: 83677.000 (gap 4.116%), aug: 83677.000 (gap 4.116%)
+[2026-04-28 19:24:27] TSPTester_LIB.py(167) : ===============================================================
+[2026-04-28 19:24:27] TSPTester_LIB.py(168) : Instance name: kroE100, problem_size: 100, EDGE_WEIGHT_TYPE: EUC_2D
+[2026-04-28 19:24:27] TSPTester_LIB.py(210) : optimal: 22068.000, no_aug: 22394.000 (gap 1.477%), aug: 22177.000 (gap 0.494%)
+[2026-04-28 19:24:27] TSPTester_LIB.py(220) : =========================== Summary ===========================
+[2026-04-28 19:24:27] TSPTester_LIB.py(221) : All done, solved instance number: 10/10, total time: 8.50s
+[2026-04-28 19:24:27] TSPTester_LIB.py(228) : Avg gap(no aug): 3.754%, Avg gap(aug): 2.330%
