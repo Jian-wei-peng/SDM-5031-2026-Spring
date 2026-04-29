@@ -1,0 +1,99 @@
+{
+  "args": {
+    "exp_name": "smoke_model_variant_cpu",
+    "use_cuda": false,
+    "cuda_device_num": 0,
+    "epochs": 1,
+    "train_episodes": 2,
+    "train_batch_size": 2,
+    "lr": 1e-05,
+    "weight_decay": 1e-06,
+    "scheduler_milestones": "",
+    "scheduler_gamma": 0.1,
+    "init_checkpoint": "/Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/POMO_model/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt",
+    "load_optimizer": false,
+    "load_scheduler": false,
+    "reset_epoch": true,
+    "curriculum": "1:100",
+    "distribution_mix": "uniform:1.0",
+    "dynamic_batch_sizes": "100:64",
+    "model_save_interval": 1,
+    "img_save_interval": 1,
+    "eval_after_train": false,
+    "eval_data_path": "/Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/data/val",
+    "eval_aug_factor": 8,
+    "detailed_log": false,
+    "use_polynet": true,
+    "z_dim": 4,
+    "poly_embedding_dim": 16,
+    "force_first_move": true
+  },
+  "env_params": {
+    "problem_size": 100,
+    "pomo_size": 100
+  },
+  "model_params": {
+    "embedding_dim": 128,
+    "sqrt_embedding_dim": 11.313708498984761,
+    "encoder_layer_num": 6,
+    "qkv_dim": 16,
+    "head_num": 8,
+    "logit_clipping": 10,
+    "ff_hidden_dim": 512,
+    "eval_type": "argmax",
+    "use_polynet": true,
+    "z_dim": 4,
+    "poly_embedding_dim": 16,
+    "force_first_move": true
+  },
+  "optimizer_params": {
+    "optimizer": {
+      "lr": 1e-05,
+      "weight_decay": 1e-06
+    },
+    "scheduler": {
+      "milestones": [],
+      "gamma": 0.1
+    }
+  },
+  "trainer_params": {
+    "use_cuda": false,
+    "cuda_device_num": 0,
+    "epochs": 1,
+    "train_episodes": 2,
+    "train_batch_size": 2,
+    "problem_size_schedule": [
+      {
+        "start_epoch": 1,
+        "sizes": [
+          100
+        ]
+      }
+    ],
+    "distribution_mix": {
+      "uniform": 1.0
+    },
+    "dynamic_batch_sizes": {
+      "100": 64
+    },
+    "logging": {
+      "model_save_interval": 1,
+      "img_save_interval": 1,
+      "log_image_params_1": {
+        "json_foldername": "log_image_style",
+        "filename": "style_tsp_20.json"
+      },
+      "log_image_params_2": {
+        "json_foldername": "log_image_style",
+        "filename": "style_loss_1.json"
+      }
+    },
+    "model_load": {
+      "enable": true,
+      "checkpoint_path": "/Users/jianweipeng/Documents/作业/SDM-5031-2026-Spring/TSP/POMO_model/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt",
+      "load_optimizer": false,
+      "load_scheduler": false,
+      "reset_epoch": true
+    }
+  }
+}

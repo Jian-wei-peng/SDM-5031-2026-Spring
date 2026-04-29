@@ -16,32 +16,59 @@
 ## Repository Structure
 
 ```text
-POMO/
+.
 ├── README.md
 ├── requirements.txt
 ├── TSP/
-│   ├── TSProblemDef.py
+│   ├── TSProblemDef.py           # original POMO problem generator used by TSP/POMO
 │   ├── data/
 │   │   └── val/                  # public validation set, NOT the final hidden test set
-│   └── POMO/
-│       ├── train.py             # training entrypoint
-│       ├── test.py              # standardized evaluation entrypoint
-│       ├── TSPTrainer.py
-│       ├── TSPTester_LIB.py
-│       ├── TSPModel.py
-│       ├── TSPEnv.py
-│       ├── tsplib_utils.py
-│       └── result/
-│           └── saved_tsp100_model2_longTrain/
-│               └── checkpoint-3000.pt   # bundled baseline checkpoint
+│   ├── POMO/                     # original POMO baseline code
+│   ├── POMO_train/               # training-side improvement only
+│   ├── POMO_model/               # model-side improvement only
+│   └── POMO_train_model/         # combined training + model improvements
 └── utils/
     ├── utils.py
     └── log_image_style/
 ```
 
+## Project Variants
+
+This repository keeps several TSP solver variants for ablation and final model selection:
+
+| Directory | Training-side improvement | Model-side improvement | Purpose |
+|---|---|---|---|
+| `TSP/POMO` | No | No | Original POMO baseline. This directory should keep the course-standard interface. |
+| `TSP/POMO_train` | Yes | No | Multi-scale curriculum, mixed synthetic distributions, dynamic batch sizes, and checkpoint fine-tuning. |
+| `TSP/POMO_model` | No | Yes | PolyNet-style z-conditioned decoder residual, with original fixed-size uniform training. |
+| `TSP/POMO_train_model` | Yes | Yes | Combined version: training-side improvements plus z-conditioned decoder residual. |
+
+All variants keep the standardized evaluation interface:
+
+```bash
+python test.py \
+  --data_path ../data/val \
+  --checkpoint_path /path/to/checkpoint.pt \
+  --use_cuda true \
+  --cuda_device_num 0 \
+  --augmentation_enable true \
+  --aug_factor 8 \
+  --output_json /path/to/eval.json
+```
+
+For the course constraint, all provided evaluation scripts keep:
+
+```text
+pomo_size = problem_size
+aug_factor = 8
+candidate tours = problem_size * 8
+```
+
+No variant uses 2-opt, LKH3, EAS, local search, beam expansion, or test-time iterative adaptation.
+
 ## Environment and Requirements
 
-推荐使用 `Python 3.10` 或 `Python 3.11`。项目依赖见 [requirements.txt](/public/home/chenrs/project/TA/POMO/requirements.txt)。
+推荐使用 `Python 3.10` 或 `Python 3.11`。项目依赖见 [requirements.txt](requirements.txt)。
 
 建议安装步骤如下：
 
