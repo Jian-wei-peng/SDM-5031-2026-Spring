@@ -9,6 +9,14 @@ TSP/POMO/result/*
 !TSP/POMO/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt
 TSP/POMO/result_lib/
 
+# Same policy for ablation variants: keep the bundled baseline checkpoint and
+# baseline evaluation JSON, ignore generated training/evaluation runs.
+TSP/POMO_*/result/*
+!TSP/POMO_*/result/saved_tsp100_model2_longTrain/
+!TSP/POMO_*/result/saved_tsp100_model2_longTrain/checkpoint-3000.pt
+TSP/POMO_*/result_lib/*
+!TSP/POMO_*/result_lib/baseline_eval_cpu.json
+
 NEW_py_ver/TSP/data/tsplib/*
 NEW_py_ver/TSP/POMO/result_lib/*
 NEW_py_ver/TSP/data/*

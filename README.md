@@ -26,7 +26,12 @@
 │   ├── POMO/                     # original POMO baseline code
 │   ├── POMO_train/               # training-side improvement only
 │   ├── POMO_model/               # model-side improvement only
-│   └── POMO_train_model/         # combined training + model improvements
+│   ├── POMO_model_zshuffle/      # model-side + random z assignment ablation
+│   ├── POMO_train_model/         # combined training + model improvements
+│   ├── POMO_train_model_zshuffle/ # combined version + random z assignment
+│   ├── POMO_train_model_zgated/   # combined version + gated z residual
+│   ├── POMO_train_model_difflr/   # combined version + differential LR
+│   └── POMO_train_model_zshuffle_zgated_difflr/ # final combined candidate
 └── utils/
     ├── utils.py
     └── log_image_style/
@@ -34,14 +39,46 @@
 
 ## Project Variants
 
-This repository keeps several TSP solver variants for ablation and final model selection:
+This repository keeps several TSP solver variants for ablation and final model selection. The full matrix is:
 
-| Directory | Training-side improvement | Model-side improvement | Purpose |
-|---|---|---|---|
-| `TSP/POMO` | No | No | Original POMO baseline. This directory should keep the course-standard interface. |
-| `TSP/POMO_train` | Yes | No | Multi-scale curriculum, mixed synthetic distributions, dynamic batch sizes, and checkpoint fine-tuning. |
-| `TSP/POMO_model` | No | Yes | PolyNet-style z-conditioned decoder residual, with original fixed-size uniform training. |
-| `TSP/POMO_train_model` | Yes | Yes | Combined version: training-side improvements plus z-conditioned decoder residual. |
+| Directory | Training-side improvement | z residual | z shuffle | z gate | diff LR | Purpose |
+|---|---:|---:|---:|---:|---:|---|
+| `TSP/POMO` | No | No | No | No | No | Original POMO baseline. |
+| `TSP/POMO_train` | Yes | No | No | No | No | Tests multi-scale curriculum, mixed synthetic distributions, dynamic batch sizes, and checkpoint fine-tuning. |
+| `TSP/POMO_model` | No | Yes | No | No | No | Tests PolyNet-style z-conditioned decoder residual with original fixed-size uniform training. |
+| `TSP/POMO_model_zshuffle` | No | Yes | Yes | No | No | Tests whether random z assignment improves the z residual itself. |
+| `TSP/POMO_train_model` | Yes | Yes | No | No | No | Tests the combination of training-side improvements and z residual. |
+| `TSP/POMO_train_model_zshuffle` | Yes | Yes | Yes | No | No | Tests whether z-shuffle further improves the combined model. |
+| `TSP/POMO_train_model_zgated` | Yes | Yes | No | Yes | No | Tests whether a conservative gate stabilizes the z residual. |
+| `TSP/POMO_train_model_difflr` | Yes | Yes | No | No | Yes | Tests whether differential LR protects the backbone while training new z modules. |
+| `TSP/POMO_train_model_zshuffle_zgated_difflr` | Yes | Yes | Yes | Yes | Yes | Final combined candidate. |
+
+The two z-shuffle ablations answer two separate questions:
+
+```text
+Q1: Does random z assignment make the z-conditioned residual more useful?
+    Compare POMO_model vs POMO_model_zshuffle.
+
+Q2: After training-side improvements are added, does random z assignment further improve the combined model?
+    Compare POMO_train_model vs POMO_train_model_zshuffle.
+```
+
+In z-shuffle variants, training randomly permutes the assignment between rollout index and z code. Evaluation keeps deterministic z assignment, so the official candidate budget does not increase.
+
+The stability-oriented ablations are evaluated only on the combined training setting:
+
+```text
+Q3: Does a gated z residual reduce fine-tuning instability or small-instance regression?
+    Compare POMO_train_model vs POMO_train_model_zgated.
+
+Q4: Does differential LR protect the original POMO backbone while training the new z module?
+    Compare POMO_train_model vs POMO_train_model_difflr.
+
+Q5: Do z-shuffle, z-gate, and differential LR combine into the strongest final variant?
+    Compare POMO_train_model_zshuffle_zgated_difflr against all combined variants.
+```
+
+The `POMO_model` line is intentionally kept focused on model-only z residual and z-shuffle mechanism checks. The gated residual and differential-LR variants are placed on the `POMO_train_model` line because they target final fine-tuning stability under multi-scale mixed-distribution training.
 
 All variants keep the standardized evaluation interface:
 
