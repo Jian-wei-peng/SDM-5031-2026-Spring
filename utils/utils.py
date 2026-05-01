@@ -294,7 +294,7 @@ def _build_log_image_plt(img_params,
         ys_for_stats = ys if isinstance(ys, list) else [ys]
         x_values.extend(xs_for_stats)
         y_values.extend(ys_for_stats)
-        plt.plot(xs, ys, marker='o', label=label)
+        plt.plot(xs, ys, label=label)
 
     def _finite_min_max(values):
         finite_values = [float(value) for value in values if np.isfinite(value)]
