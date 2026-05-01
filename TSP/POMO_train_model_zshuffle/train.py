@@ -203,7 +203,7 @@ def build_params(args):
             'img_save_interval': args.img_save_interval,
             'log_image_params_1': {
                 'json_foldername': 'log_image_style',
-                'filename': 'style_tsp_20.json',
+                'filename': 'style_tsp_100.json',
             },
             'log_image_params_2': {
                 'json_foldername': 'log_image_style',

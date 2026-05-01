@@ -33,6 +33,9 @@ import logging
 import logging.config
 import pytz
 import numpy as np
+import matplotlib
+
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import json
 import shutil
@@ -259,41 +262,73 @@ def _build_log_image_plt(img_params,
                          labels=None):
     assert type(result_log) == LogData, 'use LogData Class for result_log.'
 
-    # Read json
+    default_config = {
+        'figsize': {'x': 10, 'y': 5},
+        'xlim': {'min': None, 'max': None},
+        'ylim': {'min': None, 'max': None},
+        'grid': True,
+    }
+
+    # Read json. If a style file is missing, still save the training curve.
     folder_name = img_params['json_foldername']
     file_name = img_params['filename']
     log_image_config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), folder_name, file_name)
 
-    with open(log_image_config_file, 'r') as f:
-        config = json.load(f)
+    try:
+        with open(log_image_config_file, 'r') as f:
+            config = json.load(f)
+    except FileNotFoundError:
+        config = default_config
 
     figsize = (config['figsize']['x'], config['figsize']['y'])
     plt.figure(figsize=figsize)
 
     if labels is None:
         labels = result_log.get_keys()
+
+    x_values = []
+    y_values = []
     for label in labels:
-        plt.plot(*result_log.getXY(label), label=label)
+        xs, ys = result_log.getXY(label)
+        xs_for_stats = xs if isinstance(xs, list) else [xs]
+        ys_for_stats = ys if isinstance(ys, list) else [ys]
+        x_values.extend(xs_for_stats)
+        y_values.extend(ys_for_stats)
+        plt.plot(xs, ys, marker='o', label=label)
 
-    ylim_min = config['ylim']['min']
-    ylim_max = config['ylim']['max']
-    if ylim_min is None:
-        ylim_min = plt.gca().dataLim.ymin
-    if ylim_max is None:
-        ylim_max = plt.gca().dataLim.ymax
-    plt.ylim(ylim_min, ylim_max)
+    def _finite_min_max(values):
+        finite_values = [float(value) for value in values if np.isfinite(value)]
+        if not finite_values:
+            return 0.0, 1.0
+        return min(finite_values), max(finite_values)
 
-    xlim_min = config['xlim']['min']
-    xlim_max = config['xlim']['max']
-    if xlim_min is None:
-        xlim_min = plt.gca().dataLim.xmin
-    if xlim_max is None:
-        xlim_max = plt.gca().dataLim.xmax
+    def _resolve_axis_limits(limit_config, data_min, data_max):
+        lower = data_min if limit_config['min'] is None else limit_config['min']
+        upper = data_max if limit_config['max'] is None else limit_config['max']
+
+        if data_min < lower:
+            lower = data_min
+        if data_max > upper:
+            upper = data_max
+
+        if lower == upper:
+            padding = max(abs(lower) * 0.05, 1.0)
+        else:
+            padding = (upper - lower) * 0.05
+        return lower - padding, upper + padding
+
+    x_data_min, x_data_max = _finite_min_max(x_values)
+    y_data_min, y_data_max = _finite_min_max(y_values)
+    xlim_min, xlim_max = _resolve_axis_limits(config['xlim'], x_data_min, x_data_max)
+    ylim_min, ylim_max = _resolve_axis_limits(config['ylim'], y_data_min, y_data_max)
+
     plt.xlim(xlim_min, xlim_max)
+    plt.ylim(ylim_min, ylim_max)
 
     plt.rc('legend', **{'fontsize': 18})
     plt.legend()
     plt.grid(config["grid"])
+    plt.tight_layout()
 
 
 def copy_all_src(dst_root):
@@ -390,4 +425,3 @@ def copy_all_src(dst_root):
                 except FileNotFoundError:
                     # Some modules may report a relative/non-existent path; skip.
                     pass
-
