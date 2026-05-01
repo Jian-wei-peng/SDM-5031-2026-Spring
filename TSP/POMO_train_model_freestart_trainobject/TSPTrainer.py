@@ -207,11 +207,12 @@ class TSPTrainer:
             loss = -advantage * log_prob
             loss_mean = loss.mean()
         elif train_objective == 'best_of_k':
+            advantage = reward - reward.float().mean(dim=1, keepdims=True)
             best_idx = reward.argmax(dim=1, keepdim=True)
-            baseline = reward.float().mean(dim=1, keepdims=True)
-            best_advantage = (reward.gather(dim=1, index=best_idx) - baseline).squeeze(1)
-            best_log_prob = log_prob.gather(dim=1, index=best_idx).squeeze(1)
-            loss_mean = -(best_advantage * best_log_prob).mean()
+            best_mask = torch.zeros_like(log_prob, dtype=torch.bool)
+            best_mask.scatter_(dim=1, index=best_idx, value=True)
+            loss = -advantage * log_prob.masked_fill(~best_mask, 0.0)
+            loss_mean = loss.mean()
         else:
             raise ValueError(f"Unknown train_objective: {train_objective}")
 
