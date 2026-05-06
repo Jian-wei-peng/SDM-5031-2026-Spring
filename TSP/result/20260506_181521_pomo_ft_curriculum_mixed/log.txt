@@ -1,0 +1,124 @@
+[2026-05-06 17:15:22] train.py(591) : POMO multi-scale distribution-aware training
+[2026-05-06 17:15:22] train.py(592) : SCRIPT_DIR: D:\PythonProject2\SDM-5031-2026-Spring-master\POMO_train_model_data
+[2026-05-06 17:15:22] train.py(593) : TSP_DIR: D:\PythonProject2\SDM-5031-2026-Spring-master
+[2026-05-06 17:15:22] train.py(594) : args: Namespace(exp_name='pomo_ft_curriculum_mixed', use_cuda=True, cuda_device_num=0, epochs=500, train_episodes=100000, train_batch_size=64, lr=1e-05, weight_decay=1e-06, scheduler_milestones='', scheduler_gamma=0.1, init_checkpoint='D:\\PythonProject2\\SDM-5031-2026-Spring-master\\POMO_train_model_data\\result\\20260506_162527_pomo_ft_curriculum_mixed\\checkpoint-10.pt', load_optimizer=False, load_scheduler=False, reset_epoch=False, curriculum='1:100;51:100,125,150;151:100,125,150,200;301:100,125,150,200,250,300', distribution_mix='uniform:0.70,clustered:0.10,anisotropic:0.10,grid_jitter:0.05,mixed_density:0.05', dynamic_batch_sizes='100:64,125:48,150:40,200:24,250:16,300:12', model_save_interval=10, img_save_interval=10, eval_after_train=True, eval_data_path='D:\\PythonProject2\\SDM-5031-2026-Spring-master\\data\\val', eval_aug_factor=8, detailed_log=False, use_polynet=True, z_dim=16, poly_embedding_dim=256, force_first_move=True)
+[2026-05-06 17:15:22] train.py(595) : env_params{'problem_size': 100, 'pomo_size': 100}
+[2026-05-06 17:15:22] train.py(596) : model_params{'embedding_dim': 128, 'sqrt_embedding_dim': 11.313708498984761, 'encoder_layer_num': 6, 'qkv_dim': 16, 'head_num': 8, 'logit_clipping': 10, 'ff_hidden_dim': 512, 'eval_type': 'argmax', 'use_polynet': True, 'z_dim': 16, 'poly_embedding_dim': 256, 'force_first_move': True}
+[2026-05-06 17:15:22] train.py(597) : optimizer_params{'optimizer': {'lr': 1e-05, 'weight_decay': 1e-06}, 'scheduler': {'milestones': [], 'gamma': 0.1}}
+[2026-05-06 17:15:22] train.py(598) : trainer_params{'use_cuda': True, 'cuda_device_num': 0, 'epochs': 500, 'train_episodes': 100000, 'train_batch_size': 64, 'problem_size_schedule': [{'start_epoch': 1, 'sizes': [100]}, {'start_epoch': 51, 'sizes': [100, 125, 150]}, {'start_epoch': 151, 'sizes': [100, 125, 150, 200]}, {'start_epoch': 301, 'sizes': [100, 125, 150, 200, 250, 300]}], 'distribution_mix': {'uniform': 0.7, 'clustered': 0.1, 'anisotropic': 0.1, 'grid_jitter': 0.05, 'mixed_density': 0.05}, 'dynamic_batch_sizes': {100: 64, 125: 48, 150: 40, 200: 24, 250: 16, 300: 12}, 'logging': {'model_save_interval': 10, 'img_save_interval': 10, 'log_image_params_1': {'json_foldername': 'log_image_style', 'filename': 'style_tsp_20.json'}, 'log_image_params_2': {'json_foldername': 'log_image_style', 'filename': 'style_loss_1.json'}}, 'model_load': {'enable': True, 'checkpoint_path': 'D:\\PythonProject2\\SDM-5031-2026-Spring-master\\POMO_train_model_data\\result\\20260506_162527_pomo_ft_curriculum_mixed\\checkpoint-10.pt', 'load_optimizer': False, 'load_scheduler': False, 'reset_epoch': False}}
+[2026-05-06 17:15:23] TSPTrainer.py(85) : Saved Model Loaded: D:\PythonProject2\SDM-5031-2026-Spring-master\POMO_train_model_data\result\20260506_162527_pomo_ft_curriculum_mixed\checkpoint-10.pt
+[2026-05-06 17:15:23] TSPTrainer.py(86) : load_optimizer: False, load_scheduler: False, reset_epoch: False, polynet_checkpoint: True
+[2026-05-06 17:15:23] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:15:23] TSPTrainer.py(136) : Epoch  11: active problem sizes: [100]
+[2026-05-06 17:15:24] TSPTrainer.py(158) : Epoch  11: Train  64/100000(0.1%) N: 100, dist:       uniform, Score: 7.7914, Loss: -0.0410
+[2026-05-06 17:15:24] TSPTrainer.py(158) : Epoch  11: Train 128/100000(0.1%) N: 100, dist:   grid_jitter, Score: 7.5688, Loss: -0.0474
+[2026-05-06 17:15:24] TSPTrainer.py(158) : Epoch  11: Train 192/100000(0.2%) N: 100, dist:       uniform, Score: 7.6349, Loss: -0.0425
+[2026-05-06 17:15:24] TSPTrainer.py(158) : Epoch  11: Train 256/100000(0.3%) N: 100, dist:       uniform, Score: 7.6692, Loss: -0.0436
+[2026-05-06 17:15:25] TSPTrainer.py(158) : Epoch  11: Train 320/100000(0.3%) N: 100, dist:       uniform, Score: 7.6947, Loss: -0.0402
+[2026-05-06 17:15:25] TSPTrainer.py(158) : Epoch  11: Train 384/100000(0.4%) N: 100, dist:   anisotropic, Score: 7.3152, Loss: -0.0448
+[2026-05-06 17:15:25] TSPTrainer.py(158) : Epoch  11: Train 448/100000(0.4%) N: 100, dist:   anisotropic, Score: 7.0437, Loss: -0.0524
+[2026-05-06 17:15:26] TSPTrainer.py(158) : Epoch  11: Train 512/100000(0.5%) N: 100, dist:       uniform, Score: 7.1436, Loss: -0.0511
+[2026-05-06 17:15:26] TSPTrainer.py(158) : Epoch  11: Train 576/100000(0.6%) N: 100, dist:       uniform, Score: 7.2114, Loss: -0.0501
+[2026-05-06 17:15:26] TSPTrainer.py(158) : Epoch  11: Train 640/100000(0.6%) N: 100, dist:       uniform, Score: 7.2693, Loss: -0.0488
+[2026-05-06 17:23:13] TSPTrainer.py(167) : Epoch  11: Train (100%) Score: 7.2228, Loss: -0.0585
+[2026-05-06 17:23:13] TSPTrainer.py(106) : Epoch  11/500: Time Est.: Elapsed[7.83m], Remain[63.83h]
+[2026-05-06 17:23:13] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 17:23:13] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:23:13] TSPTrainer.py(136) : Epoch  12: active problem sizes: [100]
+[2026-05-06 17:31:05] TSPTrainer.py(167) : Epoch  12: Train (100%) Score: 7.2327, Loss: -0.0586
+[2026-05-06 17:31:05] TSPTrainer.py(106) : Epoch  12/500: Time Est.: Elapsed[15.70m], Remain[63.85h]
+[2026-05-06 17:31:05] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 17:31:05] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:31:05] TSPTrainer.py(136) : Epoch  13: active problem sizes: [100]
+[2026-05-06 17:38:54] TSPTrainer.py(167) : Epoch  13: Train (100%) Score: 7.2089, Loss: -0.0590
+[2026-05-06 17:38:54] TSPTrainer.py(106) : Epoch  13/500: Time Est.: Elapsed[23.52m], Remain[63.65h]
+[2026-05-06 17:38:54] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 17:38:54] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:38:54] TSPTrainer.py(136) : Epoch  14: active problem sizes: [100]
+[2026-05-06 17:46:45] TSPTrainer.py(167) : Epoch  14: Train (100%) Score: 7.2514, Loss: -0.0574
+[2026-05-06 17:46:45] TSPTrainer.py(106) : Epoch  14/500: Time Est.: Elapsed[31.37m], Remain[63.53h]
+[2026-05-06 17:46:45] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 17:46:45] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:46:45] TSPTrainer.py(136) : Epoch  15: active problem sizes: [100]
+[2026-05-06 17:54:36] TSPTrainer.py(167) : Epoch  15: Train (100%) Score: 7.2285, Loss: -0.0572
+[2026-05-06 17:54:36] TSPTrainer.py(106) : Epoch  15/500: Time Est.: Elapsed[39.21m], Remain[63.40h]
+[2026-05-06 17:54:36] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 17:54:36] TSPTrainer.py(95) : =================================================================
+[2026-05-06 17:54:36] TSPTrainer.py(136) : Epoch  16: active problem sizes: [100]
+[2026-05-06 18:02:27] TSPTrainer.py(167) : Epoch  16: Train (100%) Score: 7.2000, Loss: -0.0578
+[2026-05-06 18:02:27] TSPTrainer.py(106) : Epoch  16/500: Time Est.: Elapsed[47.07m], Remain[63.28h]
+[2026-05-06 18:02:27] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:02:27] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:02:27] TSPTrainer.py(136) : Epoch  17: active problem sizes: [100]
+[2026-05-06 18:10:18] TSPTrainer.py(167) : Epoch  17: Train (100%) Score: 7.2077, Loss: -0.0570
+[2026-05-06 18:10:18] TSPTrainer.py(106) : Epoch  17/500: Time Est.: Elapsed[54.91m], Remain[63.15h]
+[2026-05-06 18:10:18] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:10:18] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:10:18] TSPTrainer.py(136) : Epoch  18: active problem sizes: [100]
+[2026-05-06 18:18:08] TSPTrainer.py(167) : Epoch  18: Train (100%) Score: 7.1865, Loss: -0.0570
+[2026-05-06 18:18:08] TSPTrainer.py(106) : Epoch  18/500: Time Est.: Elapsed[1.05h], Remain[63.01h]
+[2026-05-06 18:18:08] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:18:08] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:18:08] TSPTrainer.py(136) : Epoch  19: active problem sizes: [100]
+[2026-05-06 18:26:00] TSPTrainer.py(167) : Epoch  19: Train (100%) Score: 7.2153, Loss: -0.0566
+[2026-05-06 18:26:00] TSPTrainer.py(106) : Epoch  19/500: Time Est.: Elapsed[1.18h], Remain[62.90h]
+[2026-05-06 18:26:00] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:26:00] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:26:00] TSPTrainer.py(136) : Epoch  20: active problem sizes: [100]
+[2026-05-06 18:33:53] TSPTrainer.py(167) : Epoch  20: Train (100%) Score: 7.1918, Loss: -0.0569
+[2026-05-06 18:33:53] TSPTrainer.py(106) : Epoch  20/500: Time Est.: Elapsed[1.31h], Remain[62.80h]
+[2026-05-06 18:33:53] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:33:53] TSPTrainer.py(261) : Saving trained_model
+[2026-05-06 18:33:53] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:33:53] TSPTrainer.py(136) : Epoch  21: active problem sizes: [100]
+[2026-05-06 18:41:47] TSPTrainer.py(167) : Epoch  21: Train (100%) Score: 7.1773, Loss: -0.0555
+[2026-05-06 18:41:47] TSPTrainer.py(106) : Epoch  21/500: Time Est.: Elapsed[1.44h], Remain[62.70h]
+[2026-05-06 18:41:47] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:41:47] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:41:47] TSPTrainer.py(136) : Epoch  22: active problem sizes: [100]
+[2026-05-06 18:49:42] TSPTrainer.py(167) : Epoch  22: Train (100%) Score: 7.1964, Loss: -0.0554
+[2026-05-06 18:49:42] TSPTrainer.py(106) : Epoch  22/500: Time Est.: Elapsed[1.57h], Remain[62.62h]
+[2026-05-06 18:49:42] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:49:42] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:49:42] TSPTrainer.py(136) : Epoch  23: active problem sizes: [100]
+[2026-05-06 18:58:31] TSPTrainer.py(167) : Epoch  23: Train (100%) Score: 7.1658, Loss: -0.0569
+[2026-05-06 18:58:31] TSPTrainer.py(106) : Epoch  23/500: Time Est.: Elapsed[1.72h], Remain[63.07h]
+[2026-05-06 18:58:31] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 18:58:31] TSPTrainer.py(95) : =================================================================
+[2026-05-06 18:58:31] TSPTrainer.py(136) : Epoch  24: active problem sizes: [100]
+[2026-05-06 19:06:59] TSPTrainer.py(167) : Epoch  24: Train (100%) Score: 7.2294, Loss: -0.0543
+[2026-05-06 19:06:59] TSPTrainer.py(106) : Epoch  24/500: Time Est.: Elapsed[1.86h], Remain[63.24h]
+[2026-05-06 19:06:59] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:06:59] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:06:59] TSPTrainer.py(136) : Epoch  25: active problem sizes: [100]
+[2026-05-06 19:15:03] TSPTrainer.py(167) : Epoch  25: Train (100%) Score: 7.1743, Loss: -0.0546
+[2026-05-06 19:15:03] TSPTrainer.py(106) : Epoch  25/500: Time Est.: Elapsed[1.99h], Remain[63.16h]
+[2026-05-06 19:15:03] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:15:03] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:15:03] TSPTrainer.py(136) : Epoch  26: active problem sizes: [100]
+[2026-05-06 19:23:08] TSPTrainer.py(167) : Epoch  26: Train (100%) Score: 7.2495, Loss: -0.0523
+[2026-05-06 19:23:08] TSPTrainer.py(106) : Epoch  26/500: Time Est.: Elapsed[2.13h], Remain[63.08h]
+[2026-05-06 19:23:08] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:23:08] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:23:08] TSPTrainer.py(136) : Epoch  27: active problem sizes: [100]
+[2026-05-06 19:31:14] TSPTrainer.py(167) : Epoch  27: Train (100%) Score: 7.2333, Loss: -0.0529
+[2026-05-06 19:31:14] TSPTrainer.py(106) : Epoch  27/500: Time Est.: Elapsed[2.26h], Remain[63.00h]
+[2026-05-06 19:31:14] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:31:14] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:31:14] TSPTrainer.py(136) : Epoch  28: active problem sizes: [100]
+[2026-05-06 19:39:19] TSPTrainer.py(167) : Epoch  28: Train (100%) Score: 7.1901, Loss: -0.0536
+[2026-05-06 19:39:19] TSPTrainer.py(106) : Epoch  28/500: Time Est.: Elapsed[2.40h], Remain[62.91h]
+[2026-05-06 19:39:19] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:39:19] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:39:19] TSPTrainer.py(136) : Epoch  29: active problem sizes: [100]
+[2026-05-06 19:47:24] TSPTrainer.py(167) : Epoch  29: Train (100%) Score: 7.1885, Loss: -0.0535
+[2026-05-06 19:47:24] TSPTrainer.py(106) : Epoch  29/500: Time Est.: Elapsed[2.53h], Remain[62.81h]
+[2026-05-06 19:47:24] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:47:24] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:47:24] TSPTrainer.py(136) : Epoch  30: active problem sizes: [100]
+[2026-05-06 19:55:36] TSPTrainer.py(167) : Epoch  30: Train (100%) Score: 7.1693, Loss: -0.0531
+[2026-05-06 19:55:36] TSPTrainer.py(106) : Epoch  30/500: Time Est.: Elapsed[2.67h], Remain[62.75h]
+[2026-05-06 19:55:36] TSPTrainer.py(276) : Saving log_image
+[2026-05-06 19:55:36] TSPTrainer.py(261) : Saving trained_model
+[2026-05-06 19:55:36] TSPTrainer.py(95) : =================================================================
+[2026-05-06 19:55:36] TSPTrainer.py(136) : Epoch  31: active problem sizes: [100]
