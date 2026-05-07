@@ -57,8 +57,14 @@ class TSPEnv:
     def load_problems(self, batch_size, aug_factor=1):
         self.batch_size = batch_size
 
-        self.problems = get_random_problems(batch_size, self.problem_size)
+        # self.problems = get_random_problems(batch_size, self.problem_size)
         # problems.shape: (batch, problem, 2)
+        self.problems = get_random_problems(
+            batch_size,
+            self.problem_size,
+            distribution='mixed',  # 选项：'uniform', 'clustered', 'mixed', 'gaussian'
+            mix_ratio=0.5  # 50%聚类，50%均匀
+        )
         if aug_factor > 1:
             if aug_factor == 8:
                 self.batch_size = self.batch_size * 8
