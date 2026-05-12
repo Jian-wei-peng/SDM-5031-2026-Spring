@@ -1,0 +1,11 @@
+checkpoint	no_aug_gap	no_aug_solved	no_aug_total	aug_gap	aug_solved	aug_total	checkpoint_path
+50	1.2758912785705676	10	10	0.9425429219366125	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-50.pt
+100	1.4228160784138741	10	10	0.8530271272439851	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-100.pt
+150	1.362907027055682	10	10	0.6534481928570945	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-150.pt
+200	1.154157158914583	10	10	0.6924897003170907	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-200.pt
+250	1.0611943254522107	10	10	0.7022168998425657	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-250.pt
+300	0.961309465007336	10	10	0.6100813660006719	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-300.pt
+350	0.7965416178374525	10	10	0.6136924831363838	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-350.pt
+400	0.9764564079221728	10	10	0.6511768511235254	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-400.pt
+450	0.8712077586721945	10	10	0.5244381516818818	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-450.pt
+500	0.8605866808902821	10	10	0.5680463809252512	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train_model/result/20260430_110622_train_model_on_best/checkpoint-500.pt

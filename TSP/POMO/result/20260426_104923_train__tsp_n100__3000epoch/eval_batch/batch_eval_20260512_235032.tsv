@@ -1,0 +1,6 @@
+checkpoint	no_aug_gap	no_aug_solved	no_aug_total	aug_gap	aug_solved	aug_total	checkpoint_path
+3100	3.1715640566569165	10	10	2.081017205351253	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO/result/20260426_104923_train__tsp_n100__3000epoch/checkpoint-3100.pt
+3200	3.3155285827930454	10	10	2.05551518496375	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO/result/20260426_104923_train__tsp_n100__3000epoch/checkpoint-3200.pt
+3300	3.3923888522706562	10	10	1.9885173744287747	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO/result/20260426_104923_train__tsp_n100__3000epoch/checkpoint-3300.pt
+3400	3.3485722098884714	10	10	2.013594345780103	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO/result/20260426_104923_train__tsp_n100__3000epoch/checkpoint-3400.pt
+3500	3.338567719798921	10	10	2.0618948111275346	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO/result/20260426_104923_train__tsp_n100__3000epoch/checkpoint-3500.pt

@@ -1,0 +1,2 @@
+checkpoint	no_aug_gap	no_aug_solved	no_aug_total	aug_gap	aug_solved	aug_total	checkpoint_path
+50	2.0010378948287064	10	10	1.602674785846439	10	10	/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train/result/20260426_191342_pjw_ft_curriculum_mixed/checkpoint-50.pt

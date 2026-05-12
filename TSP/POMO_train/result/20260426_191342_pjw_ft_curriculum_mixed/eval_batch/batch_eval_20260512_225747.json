@@ -1,0 +1,12 @@
+[
+  {
+    "checkpoint": 50,
+    "checkpoint_path": "/home/cyg/SDM5031/SDM-5031-2026-Spring/TSP/POMO_train/result/20260426_191342_pjw_ft_curriculum_mixed/checkpoint-50.pt",
+    "no_aug_gap": 2.0010378948287064,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 1.602674785846439,
+    "aug_solved": 10,
+    "aug_total": 10
+  }
+]
