@@ -9,6 +9,7 @@ from TSPEnv import TSPEnv as Env
 from TSPModel import TSPModel as Model
 from TSProblemDef import get_random_problems
 from utils.utils import *
+import numpy as np
 
 
 class TSPTrainer:
@@ -27,8 +28,13 @@ class TSPTrainer:
         self.result_folder = get_result_folder()
         self.result_log = LogData()
 
+        random.seed(42)
+        np.random.seed(42)
+        torch.manual_seed(42)
+
         use_cuda = self.trainer_params['use_cuda']
         if use_cuda:
+            torch.cuda.manual_seed_all(42)
             cuda_device_num = self.trainer_params['cuda_device_num']
             torch.cuda.set_device(cuda_device_num)
             device = torch.device('cuda', cuda_device_num)

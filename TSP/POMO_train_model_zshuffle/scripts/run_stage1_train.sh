@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 EXP_NAME="${1:-pomo_train_model_zshuffle_stage1}"
-CUDA_DEVICE_NUM="${CUDA_DEVICE_NUM:-0}"
+CUDA_DEVICE_NUM="${CUDA_DEVICE_NUM:-2}"
 INIT_CHECKPOINT="${INIT_CHECKPOINT:-./result/saved_tsp100_model2_longTrain/checkpoint-3000.pt}"
 
 python train.py \

@@ -20,3 +20,7 @@ TSP/POMO_*/result_lib/*
 NEW_py_ver/TSP/data/tsplib/*
 NEW_py_ver/TSP/POMO/result_lib/*
 NEW_py_ver/TSP/data/*
+
+!*.jpg
+!*.txt
+!TSP/POMO_train_model_zgated/result/checkpoint-500.pt

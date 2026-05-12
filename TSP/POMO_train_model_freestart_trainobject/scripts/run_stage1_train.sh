@@ -4,7 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 EXP_NAME="${1:-pjw_model_stage1_poly_pomo}"
-CUDA_DEVICE_NUM="${CUDA_DEVICE_NUM:-0}"
+CUDA_DEVICE_NUM="${CUDA_DEVICE_NUM:-2}"
 INIT_CHECKPOINT="${INIT_CHECKPOINT:-./result/saved_tsp100_model2_longTrain/checkpoint-3000.pt}"
 SEED="${SEED:-42}"
 K="${K:-128}"

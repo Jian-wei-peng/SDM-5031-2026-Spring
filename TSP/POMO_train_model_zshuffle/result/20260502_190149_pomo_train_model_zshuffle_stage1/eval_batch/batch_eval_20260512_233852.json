@@ -1,0 +1,102 @@
+[
+  {
+    "checkpoint": 50,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-50.pt",
+    "no_aug_gap": 2.256248587846211,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 1.5920174053625966,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 100,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-100.pt",
+    "no_aug_gap": 1.7194265410227172,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 1.1545624185848904,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 150,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-150.pt",
+    "no_aug_gap": 1.4121827355908718,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 1.03615451337054,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 200,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-200.pt",
+    "no_aug_gap": 1.200272237472897,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.8576998197598126,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 250,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-250.pt",
+    "no_aug_gap": 1.2100371888378612,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.700489555740021,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 300,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-300.pt",
+    "no_aug_gap": 0.9554456716678134,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.7560723273372433,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 350,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-350.pt",
+    "no_aug_gap": 0.9255598037401418,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.6140316243777828,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 400,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-400.pt",
+    "no_aug_gap": 1.0030161249731817,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.6267402979700717,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 450,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-450.pt",
+    "no_aug_gap": 0.8305911666747443,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.6061147969904752,
+    "aug_solved": 10,
+    "aug_total": 10
+  },
+  {
+    "checkpoint": 500,
+    "checkpoint_path": "/home/cyg/SDM-5031-2026-Spring/TSP/POMO_train_model_zshuffle/result/20260502_190149_pomo_train_model_zshuffle_stage1/checkpoint-500.pt",
+    "no_aug_gap": 0.8146903032965811,
+    "no_aug_solved": 10,
+    "no_aug_total": 10,
+    "aug_gap": 0.5826016788218686,
+    "aug_solved": 10,
+    "aug_total": 10
+  }
+]
